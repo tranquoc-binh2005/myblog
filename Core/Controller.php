@@ -2,14 +2,17 @@
 namespace Core;
 
 use PDOException;
+
 class Controller
 {
     public function __construct()
     {
+        
     }
+
     public function model($model)
     {
-        $filePath = 'app/Models/' . $model . '.php';
+        $filePath = dirname(__DIR__) . '/app/Models/' . $model . '.php';
         if (file_exists($filePath)) {
             require_once $filePath;
             return new $model();
@@ -18,12 +21,9 @@ class Controller
         }
     }
 
-
     public function view($view, $data = [])
     {
         $filePath = dirname(__DIR__) . '/app/Views/' . $view . '.php';
-        // echo "Looking for view file: " . $filePath;
-    
         if (file_exists($filePath)) {
             extract($data);
             require_once $filePath;
@@ -32,4 +32,3 @@ class Controller
         }
     }
 }
-$controller = new Controller();

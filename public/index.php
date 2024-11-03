@@ -1,12 +1,24 @@
 <?php
+session_start();
 use App;
 use Core\Database;
 use Core\Controller;
+
 require_once '../vendor/autoload.php';
 $config = require_once '../Config/app.php';
 $routes = require_once '../Route/routing.php';
 
-$db = Database::getInstance($config);
+$module = require_once '../Config/module.php';
+$sub = require_once '../Config/subTitle.php';
+require_once '../Core/Alert.php';
+$GLOBALS['moduleConfig'] = $module;
+$GLOBALS['sub'] = $sub;
+
+$db = new Database($config);
+
+function createController($controllerClass, $db) {
+    return new $controllerClass($db);
+}
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $basePath = $config['basePath'];
@@ -19,16 +31,18 @@ foreach ($routes as $route => $action) {
         $regex = preg_replace('/{id}/', '(\d+)', $route);
         if (preg_match('#^' . $regex . '$#', $uri, $matches)) {
             $found = true;
-            array_shift($matches); 
+            array_shift($matches);
             [$controller, $method] = $action;
-            $controllerInstance = new $controller();
+
+            $controllerInstance = createController($controller, $db);
             call_user_func([$controllerInstance, $method], $matches[0]);
             break;
         }
     } elseif ($uri === $route) {
         $found = true;
         [$controller, $method] = $action;
-        $controllerInstance = new $controller();
+
+        $controllerInstance = createController($controller, $db);
         call_user_func([$controllerInstance, $method]);
         break;
     }

@@ -8,6 +8,8 @@ class HomeController extends Controller {
     {
     }
     public function index() {
-        $this->view('client/home/index', ['']);
+        $data['body'] = 'home';
+        $data['template'] = 'home/index';
+        $this->view('client/index', ['data' => $data]);
     }
 }
