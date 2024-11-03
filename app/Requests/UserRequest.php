@@ -72,9 +72,8 @@ class UserRequest
         if($result){
             $isPasswordCorrect = password_verify($data['password'], $result['password']);
             if($isPasswordCorrect){
-                unset($_SESSION['user']);
                 $_SESSION['user'] = $result;
-                return ['success' => true];
+                return ['success' => true, 'role' => $result['userCatalogue_id']];
             } else {
                 $errors['password'] = "Sai mật khẩu";
             }
@@ -86,7 +85,7 @@ class UserRequest
             return $errors; 
         }
 
-        return ['success' => true];
+        return ['success' => false];
     }
 
     private function isEmailExists($email) {

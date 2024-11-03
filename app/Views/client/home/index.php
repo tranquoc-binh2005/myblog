@@ -1,6 +1,3 @@
-<?php
-print_r($_SESSION['user']);
-?>
 <section class="position-relative d-flex align-items-center min-vh-100 py-5 bg-light overflow-hidden">
     <span
         class="position-absolute top-0 start-0 d-light-mode-block d-none w-100 h-100 bg-secondary opacity-75"></span>

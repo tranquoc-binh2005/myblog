@@ -60,6 +60,19 @@ function dialogShowSuccessAddCart($title, $nameProduct, $pathImg, $pathPre, $pat
           </script>';
 }
 
+function redirect($title,$text, $path){
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+    echo '<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: "error",
+                title: "' . $title . '",
+                text: "' . $text . '"
+            })
+        });
+        </script>';
+        header('location: '.$path.'');
+}
 
 function alertError($title, $text, $path)
 {

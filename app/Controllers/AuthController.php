@@ -12,6 +12,10 @@ class AuthController extends Controller {
         $this->db = $db;
     }
     public function login() {
+        if (isset($_SESSION['user'])) {
+            header('location: trang-chu');
+            exit;
+        }    
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['body'] = 'login';
             $data['template'] = 'auth/login';
@@ -22,16 +26,27 @@ class AuthController extends Controller {
             $request = new UserRequest($this->db);
             $validationResult = $request->login($data);
             if (isset($validationResult['success'])) {
-                alertSuccess('Đăng nhập thành công', "", 'trang-chu');
+                if($validationResult['role'] != 2 ? $path = 'trang-chu' : $path = 'quan-tri-vien');
+                alertSuccess('Đăng nhập thành công', "", $path);
             } else {
                 $data['email'] = $_POST['email'];
                 $errors = $validationResult;
                 $data['template'] = 'auth/login';
-                // $data['title'] = $GLOBALS['sub']['user']['title']['create'];
                 $this->view('client/index', ['errors' => $errors, 'data' => $data]);
             }
         }
     }
+
+    public function logout()
+    {
+        if(isset($_SESSION['user'])){
+            unset($_SESSION['user']);
+            alertSuccess('Thành công', '', 'trang-chu');
+        } else {
+            alertError('That bai', '', 'trang-chu');
+        }
+    }
+
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['body'] = 'login';

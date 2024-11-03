@@ -97,7 +97,7 @@ class User
     }
     public function checkUser($email)
     {
-        $sql = "SELECT id, name, email, userCatalogue_id, created_at, updated_at, deleted_at FROM user WHERE email = :email";
+        $sql = "SELECT * FROM user WHERE email = :email";
         $params = ['email' => $email];
 
         return $this->db->getOne($sql, $params);

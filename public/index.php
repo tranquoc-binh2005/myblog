@@ -16,7 +16,8 @@ $GLOBALS['sub'] = $sub;
 
 $db = new Database($config);
 
-function createController($controllerClass, $db) {
+function createController($controllerClass, $db)
+{
     return new $controllerClass($db);
 }
 

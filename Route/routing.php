@@ -4,6 +4,7 @@ namespace Route;
 
 use App\Controllers\Backend\DashboardController;
 use App\Controllers\Backend\UserCatalogueController;
+use App\Controllers\Backend\LanguageController;
 use App\Controllers\Backend\UserController as BackendUserController;
 use App\Controllers\Ajax\ChangeStatusController;
 
@@ -30,6 +31,15 @@ $routes = [
     '/xoa-thanh-vien-vinh-vien/{id}' => [BackendUserController::class, 'delete'],
     '/hoan-tac-thanh-vien/{id}' => [BackendUserController::class, 'restore'],
 
+    '/ngon-ngu' => [LanguageController::class, 'index'],
+    '/ngon-ngu-da-xoa' => [LanguageController::class, 'deleted'],
+    '/tao-ngon-ngu' => [LanguageController::class, 'store'],
+    '/xu-ly-tao-ngon-ngu' => [LanguageController::class, 'store'],
+    '/xoa-ngon-ngu/{id}' => [LanguageController::class, 'softdelete'],
+    '/sua-ngon-ngu/{id}' => [LanguageController::class, 'update'],
+    '/xoa-ngon-ngu-vinh-vien/{id}' => [LanguageController::class, 'delete'],
+    '/hoan-tac-ngon-ngu/{id}' => [LanguageController::class, 'restore'],
+
 
     '/change-status' => [ChangeStatusController::class, 'changeStatus'],
     '/change-statusAll' => [ChangeStatusController::class, 'changeStatusAll'],
@@ -39,6 +49,7 @@ $routes = [
     '/trang-chu' => [HomeController::class, 'index'],
     '/dang-nhap' => [AuthController::class, 'login'],
     '/xu-ly-dang-nhap' => [AuthController::class, 'login'],
+    '/dang-xuat' => [AuthController::class, 'logout'],
     '/dang-ky' => [AuthController::class, 'register'],
 ];
 

@@ -1,4 +1,10 @@
 <?php $sub = $GLOBALS['sub'] ?>
+<?php
+if (!isset($_SESSION['user']) || $_SESSION['user']['userCatalogue_id'] != 2) {
+    header('location: trang-chu');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <?php include 'component/head.php';?>
