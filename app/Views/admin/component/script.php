@@ -4,6 +4,10 @@
 <script src="serve\assets\js\vendor.min.js"></script>
 
 <!-- Third Party js-->
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+<script src="ckfinder\ckfinder.js"></script>
+<script src="serve\assets\js\finder.js"></script>
+
 <script src="serve\assets/libs/switchery/switchery.min.js"></script>
 <script src="serve\assets\libs\peity\jquery.peity.min.js"></script>
 <script src="serve\assets\libs\apexcharts\apexcharts.min.js"></script>

@@ -5,6 +5,7 @@ namespace Route;
 use App\Controllers\Backend\DashboardController;
 use App\Controllers\Backend\UserCatalogueController;
 use App\Controllers\Backend\LanguageController;
+use App\Controllers\Backend\PostCatalogueController;
 use App\Controllers\Backend\UserController as BackendUserController;
 use App\Controllers\Ajax\ChangeStatusController;
 
@@ -39,6 +40,15 @@ $routes = [
     '/sua-ngon-ngu/{id}' => [LanguageController::class, 'update'],
     '/xoa-ngon-ngu-vinh-vien/{id}' => [LanguageController::class, 'delete'],
     '/hoan-tac-ngon-ngu/{id}' => [LanguageController::class, 'restore'],
+
+    '/nhom-bai-viet' => [PostCatalogueController::class, 'index'],
+    '/nhom-bai-viet-da-xoa' => [PostCatalogueController::class, 'deleted'],
+    '/tao-nhom-bai-viet' => [PostCatalogueController::class, 'store'],
+    '/xu-ly-tao-nhom-bai-viet' => [PostCatalogueController::class, 'store'],
+    '/xoa-nhom-bai-viet/{id}' => [PostCatalogueController::class, 'softdelete'],
+    '/sua-nhom-bai-viet/{id}' => [PostCatalogueController::class, 'update'],
+    '/xoa-nhom-bai-viet-vinh-vien/{id}' => [PostCatalogueController::class, 'delete'],
+    '/hoan-tac-nhom-bai-viet/{id}' => [PostCatalogueController::class, 'restore'],
 
 
     '/change-status' => [ChangeStatusController::class, 'changeStatus'],

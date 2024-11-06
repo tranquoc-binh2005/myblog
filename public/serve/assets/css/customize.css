@@ -140,6 +140,7 @@ textarea{
 }
 .image-target{
     cursor: pointer;
+    background: white;
 }
 .input-wapper{
     position: relative;

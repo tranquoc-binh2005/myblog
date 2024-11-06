@@ -19,7 +19,7 @@ class Database
             $this->connection = new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->username, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            error_log('Database connection failed: ' . $e->getMessage()); // Consider logging errors
+            error_log('Database connection failed: ' . $e->getMessage());
             echo 'Kết nối không thành công.';
         }
     }
