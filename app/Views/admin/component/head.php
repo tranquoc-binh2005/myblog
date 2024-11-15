@@ -18,7 +18,12 @@
     <link href="serve\assets\css\app.min.css" rel="stylesheet" type="text/css">
     <link href="serve\assets\css\customize.css" rel="stylesheet" type="text/css">
     <link href="serve\assets\libs\switchery\switchery.min.css" rel="stylesheet" type="text/css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <script>
         var BASE_URL = 'http://localhost/myblog/public/';
+        var SUFFIX = '.html';
     </script>
 </head>

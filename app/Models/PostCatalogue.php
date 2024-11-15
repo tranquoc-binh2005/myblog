@@ -22,6 +22,7 @@ class PostCatalogue
         $user_id = null, 
     )
     {
+        $this->db = $db;
         $this->parent_id = $parent_id;
         $this->lft = $lft;
         $this->rgt = $rgt;
@@ -34,46 +35,15 @@ class PostCatalogue
         $this->user_id = $user_id;
     }
 
-    public function pagination($tableName, $limit, $page = 1, $keyword, $publish, $deleted)
+    public function loadPostCatalogue($id)
     {
-        return $this->db->paginate($tableName, $limit, $page = 1, $keyword, $publish, $deleted);
-    }
+        $sql = "SELECT tb1.*, tb2.* 
+                FROM post_catalogues as tb1 
+                JOIN post_catalogue_language as tb2 
+                ON tb1.id = tb2.post_catalogue_id 
+                WHERE tb1.id = :id";
+        $params = ['id' => $id];
 
-    public function save()
-    {
-        try {
-            $sql = "INSERT INTO post_catalogues (name, canonical, image, user_id) 
-                    VALUES (:name, :canonical, :image, :user_id)";
-            $params = [
-                ':name' => $this->name,
-                ':canonical' => $this->canonical,
-                ':image' => $this->image,
-                ':user_id' => $_SESSION['user']['id'],
-            ];
-            
-            return $this->db->insert($sql, $params);
-        } catch (PDOException $e) {
-            echo "Lỗi SQL: " . $e->getMessage();
-            return false;
-        }
-    }
-
-    public function update($id)
-    {
-        try {
-            $sql = "UPDATE post_catalogues SET name = :name, canonical = :canonical, image = :image WHERE id = :id";
-            
-            $params = [
-                ':name' => $this->name,
-                ':canonical' => $this->canonical,
-                ':image' => $this->image,
-                ':id' => $id,  
-            ];
-            
-            return $this->db->execute($sql, $params);
-        } catch (PDOException $e) {
-            echo "Lỗi SQL: " . $e->getMessage();
-            return false;
-        }
+        return $this->db->getOne($sql, $params);
     }
 }

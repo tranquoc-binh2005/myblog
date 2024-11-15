@@ -3,14 +3,20 @@
         <span class="text-danger">*</span> <br>
     </label>
     <select name="publish" class="form-control mb-2">
-        @foreach (config('apps.general.publish') as $key => $val)
-            <option {{ old('publish') == $key ? 'selected' : '' }} value="{{ $key }}">{{ $val }}</option>
-        @endforeach
+        <?php
+        foreach ($general['publish'] as $key => $publish) {?>
+            <option <?php echo ($data['postCatalogue']['publish'] == $key) ? 'selected' : ''?> value="<?=$key?>">
+                <?=$publish?>
+            </option>
+        <?php }?>
     </select>
-    
+
     <select name="follow" class="form-control">
-        @foreach (config('apps.general.follow') as $key => $val)
-        <option {{ old('follow') == $key ? 'selected' : '' }} value="{{ $key }}">{{ $val }}</option>
-        @endforeach
+        <?php
+        foreach ($general['follow'] as $key => $follow) {?>
+            <option <?php echo ($data['postCatalogue']['follow'] == $key) ? 'selected' : ''?> value="<?=$key?>">
+                <?=$follow?>
+            </option>
+        <?php }?>
     </select>
 </div>

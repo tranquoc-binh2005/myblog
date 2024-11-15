@@ -7,14 +7,14 @@
     <div class="tools-box col bg-danger mb-4">
         <div class="ul right-0 position">
             <li>
-                <?=$data['flag'] == 1 ? '<p class="dropdown-toggle btn btn-outline-secondary"><i class="fe-settings noti-icon"></i> Tùy chọn</p>' : ''?>
+                <?=$payload['flag'] == 0 ? '<p class="dropdown-toggle btn btn-outline-secondary"><i class="fe-settings noti-icon"></i> Tùy chọn</p>' : ''?>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="publishAll" data-field="languages" data-column="publish" data-value="2"
+                        <a class="publishAll" data-field="post_catalogues" data-column="publish" data-value="2"
                             href="#">Xuất bản</a>
                     </li>
                     <li>
-                        <a class="publishAll" data-field="languages" data-column="publish" data-value="1"
+                        <a class="publishAll" data-field="post_catalogues" data-column="publish" data-value="1"
                             href="#">Huỷ
                             xuất bản</a>
                     </li>
@@ -38,10 +38,10 @@
             </div>
             <div class="mr-2">
                 <select name="status" class="form-control">
-                    <option value="-1" <?= $data['status'] == -1 ? 'selected' : '' ?>>Chọn trạng thái bản ghi
+                    <option value="-1" <?= $data['publish'] == -1 ? 'selected' : '' ?>>Chọn trạng thái bản ghi
                     </option>
-                    <option value="1" <?= $data['status'] == 1 ? 'selected' : '' ?>>Publish</option>
-                    <option value="2" <?= $data['status'] == 2 ? 'selected' : '' ?>>UnPublish</option>
+                    <option value="1" <?= $data['publish'] == 1 ? 'selected' : '' ?>>Publish</option>
+                    <option value="2" <?= $data['publish'] == 2 ? 'selected' : '' ?>>UnPublish</option>
                 </select>
             </div>
             <div class="mr-2">
@@ -70,50 +70,50 @@
                         <input type="checkbox" name="checkAll" id="checkAll">
                     </th>
                     <th>Tên</th>
-                    <th>Canonical</th>
+                    <th>Đường dẫn</th>
                     <th>Hình ảnh</th>
-                    <th><?= $data['flag'] == 1 ? 'Trạng thái' : 'Ngày xoá' ?></th>
+                    <th>Trạng thái</th>
                     <th>#</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                foreach ($data['languages']['data'] as $key => $val) {
+                foreach ($data['dropDowns'] as $key => $val) {
+                    $depth = intval($val['depth']) - 1;
+                    if($depth >= 0){
+                        $prefix = str_repeat('|--', $depth);
+                    }
                 ?>
                 <tr>
-                    <th scope="row">
+                    <th width="50px" scope="row">
                         <input type="checkbox" data-id="<?= $val['id'] ?>" class="inputCheck" name="checked"
                             id="checked">
                     </th>
-                    <td><?= $val['name'] ?></td>
-                    <td><?= $val['canonical'] ?></td>
-                    <td><?= $val['image'] ?></td>
-                    <th>
-                        <?php if ($data['flag'] == 1): ?>
+                    <td><?= $prefix . $val['name'] ?></td>
+                    <td><?=$config['rootPath'] . $val['canonical'] . '.html' ?></td>
+                    <td width="200px"><img width="100px" src="<?=$val['image']?>" alt="<?=$val['name']?>"></td>
+                    <th width="100px">
                         <input type="checkbox" <?= $val['publish'] == 1 ? 'checked' : '' ?> data-plugin="switchery"
                             data-color="#64b0f2" data-size="small" data-switchery="true" style="display: none;"
-                            class="changeStatusPublish location-<?= $val['id'] ?>" data-filed="languages"
+                            class="changeStatusPublish location-<?= $val['id'] ?>" data-filed="post_catalogues"
                             data-column="publish" data-id="<?= $val['id'] ?>" data-value="<?= $val['publish'] ?>">
-                        <?php else: ?>
-                        <?= date('H:i d-m-Y', strtotime($val['deleted_at'])) ?>
-                        <?php endif; ?>
 
                     </th>
                     <?php
                     if($data['flag'] == 1){
                     ?>
-                    <th>
-                        <a style="font-size: 20px;" href="sua-ngon-ngu/<?= $val['id'] ?>"><i class="fe-edit"></i> </a>
-                        <a style="font-size: 20px; color:rgb(241, 55, 55);" href="xoa-ngon-ngu/<?= $val['id'] ?>"><i
+                    <th width="50px">
+                        <a style="font-size: 20px;" href="sua-nhom-bai-viet/<?= $val['id'] ?>"><i class="fe-edit"></i> </a>
+                        <a style="font-size: 20px; color:rgb(241, 55, 55);" href="xoa-nhom-bai-viet/<?= $val['id'] ?>"><i
                                 class="fe-trash"></i></a>
                     </th>
                     <?php } else {?>
-                    <th>
-                        <a style="font-size: 20px;" title="Đưa trở lại" href="hoan-tac-ngon-ngu/<?= $val['id'] ?>">
+                    <th width="50px">
+                        <a style="font-size: 20px;" title="Đưa trở lại" href="hoan-tac-nhom-bai-viet/<?= $val['id'] ?>">
                             <i class="fe-rotate-ccw"></i>
                         </a>
                         <a style="font-size: 20px; color:rgb(241, 55, 55);" title="Xoá vĩnh viễn"
-                            href="xoa-ngon-ngu-vinh-vien/<?= $val['id'] ?>">
+                            href="xoa-nhom-bai-viet-vinh-vien/<?= $val['id'] ?>">
                             <i class="fe-trash"></i>
                         </a>
 
@@ -122,10 +122,10 @@
                 </tr>
                 <?php }?>
                 <?php
-                if(empty($data['languages']['data'])){
+                if(empty($data['dropDowns'])){
                 ?>
                 <tr class="text-center">
-                    <td colspan="8">Không tìm thấy vai trò nào.</td>
+                    <td colspan="8">Không tìm thấy nhóm bài viết nào.</td>
                 </tr>
                 <?php }?>
             </tbody>
@@ -138,7 +138,7 @@ $totalPages = $data['total_pages'];
 ?>
 <ul class="pagination">
     <li class="page-item <?= $currentPage == 1 ? 'disabled' : '' ?>">
-        <a class="page-link" href="ngon-ngu?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+        <a class="page-link" href="nhom-bai-viet?page=<?= $currentPage - 1 ?>&keyword=<?=$data['keyword']?>&status=<?=$data['publish']?>&flag=<?=$data['flag']?>" aria-label="Previous">
             <span aria-hidden="true">«</span>
             <span class="sr-only">Previous</span>
         </a>
@@ -146,12 +146,12 @@ $totalPages = $data['total_pages'];
 
     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
     <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
-        <a class="page-link" href="ngon-ngu?page=<?= $i ?>"><?= $i ?></a>
+        <a class="page-link" href="nhom-bai-viet?page=<?= $i ?>&keyword=<?=$data['keyword']?>&status=<?=$data['publish']?>&flag=<?=$data['flag']?>"><?= $i ?></a>
     </li>
     <?php endfor; ?>
 
     <li class="page-item <?= $currentPage == $totalPages ? 'disabled' : '' ?>">
-        <a class="page-link" href="ngon-ngu?page=<?= $currentPage + 1 ?>" aria-label="Next">
+        <a class="page-link" href="nhom-bai-viet?page=<?= $currentPage + 1 ?>&keyword=<?=$data['keyword']?>&status=<?=$data['publish']?>&flag=<?=$data['flag']?>" aria-label="Next">
             <span aria-hidden="true">»</span>
             <span class="sr-only">Next</span>
         </a>

@@ -113,10 +113,17 @@ changeBackground = (object) => {
     }
 }
 
+setupSelect2 = () => {
+    $('.select-2').select2({
+        placeholder: "Hãy chọn danh mục",
+        allowClear: true
+    });
+}
 
 $(document).ready(function () {
     changeStatus()
     changeStatusAll()
     inputCheckAll()
     inputCheck()
+    setupSelect2()
 })

@@ -25,7 +25,7 @@ class PostCatalogueRequest
             $errors['canonical'] = "Bạn chưa nhập vào ô đường dẫn";
         }
 
-        if (empty($data['parent_id'])) {
+        if ($data['parent_id'] < 0) {
             $errors['parent_id'] = "Bạn chưa chọn danh mục cha";
         }
 

@@ -6,6 +6,8 @@ use App\Controllers\Backend\DashboardController;
 use App\Controllers\Backend\UserCatalogueController;
 use App\Controllers\Backend\LanguageController;
 use App\Controllers\Backend\PostCatalogueController;
+use App\Controllers\Backend\PostController;
+use App\Controllers\Backend\CatalogueController;
 use App\Controllers\Backend\UserController as BackendUserController;
 use App\Controllers\Ajax\ChangeStatusController;
 
@@ -49,6 +51,24 @@ $routes = [
     '/sua-nhom-bai-viet/{id}' => [PostCatalogueController::class, 'update'],
     '/xoa-nhom-bai-viet-vinh-vien/{id}' => [PostCatalogueController::class, 'delete'],
     '/hoan-tac-nhom-bai-viet/{id}' => [PostCatalogueController::class, 'restore'],
+
+    '/bai-viet' => [PostController::class, 'index'],
+    '/bai-viet-da-xoa' => [PostController::class, 'deleted'],
+    '/tao-bai-viet' => [PostController::class, 'store'],
+    '/xu-ly-tao-bai-viet' => [PostController::class, 'store'],
+    '/xoa-bai-viet/{id}' => [PostController::class, 'softdelete'],
+    '/sua-bai-viet/{id}' => [PostController::class, 'update'],
+    '/xoa-bai-viet-vinh-vien/{id}' => [PostController::class, 'delete'],
+    '/hoan-tac-bai-viet/{id}' => [PostController::class, 'restore'],
+
+    '/danh-muc-code' => [CatalogueController::class, 'index'],
+    '/danh-muc-code-da-xoa' => [CatalogueController::class, 'deleted'],
+    '/tao-danh-muc-code' => [CatalogueController::class, 'store'],
+    '/xu-ly-tao-danh-muc-code' => [CatalogueController::class, 'store'],
+    '/xoa-danh-muc-code/{id}' => [CatalogueController::class, 'softdelete'],
+    '/sua-danh-muc-code/{id}' => [CatalogueController::class, 'update'],
+    '/xoa-danh-muc-code-vinh-vien/{id}' => [CatalogueController::class, 'delete'],
+    '/hoan-tac-danh-muc-code/{id}' => [CatalogueController::class, 'restore'],
 
 
     '/change-status' => [ChangeStatusController::class, 'changeStatus'],

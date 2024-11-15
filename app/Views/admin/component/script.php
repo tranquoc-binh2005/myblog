@@ -1,9 +1,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="serve\assets\js\library.js"></script>
+<script src="serve\assets\js\seo.js"></script>
 
 <script src="serve\assets\js\vendor.min.js"></script>
 
 <!-- Third Party js-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
 <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 <script src="ckfinder\ckfinder.js"></script>
 <script src="serve\assets\js\finder.js"></script>

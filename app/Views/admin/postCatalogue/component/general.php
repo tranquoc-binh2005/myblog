@@ -9,7 +9,7 @@
                 class="form-control" 
                 name="name" 
                 placeholder="Nhập tiêu đề"
-                value="{{ old('name') }}"
+                value="<?=(isset($data['postCatalogue']['name'])) ? $data['postCatalogue']['name'] : $data['name']?>"
             >
         </div>
     </div>
@@ -27,7 +27,7 @@
                 placeholder="Nhập mô tả..."
                 value="{{ old('description') }}"
                 data-height=""
-            >{{ old('description') }}</textarea>
+            ><?=(isset($data['postCatalogue']['description'])) ? $data['postCatalogue']['description'] : $data['description']?></textarea>
         </div>
     </div>
 </div>
@@ -43,7 +43,7 @@
                 placeholder="Nhập nội dung..."
                 value="{{ old('content') }}"
                 data-height="500"
-            >{{ old('content') }}</textarea>
+            ><?=(isset($data['postCatalogue']['content'])) ? $data['postCatalogue']['content'] : $data['content']?></textarea>
         </div>
     </div>
 </div>

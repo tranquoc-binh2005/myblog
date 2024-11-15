@@ -1,13 +1,13 @@
 <div class="ibox-content">
     <div class="seo-container">
         <div class="meta_title">
-            {{ (old('meta-title')) ?? 'Bạn chưa có tiêu đề SEO' }}
+            <?= !empty($data['postCatalogue']['meta_title']) ? $data['postCatalogue']['meta_title'] : 'Bạn chưa có tiêu đề SEO' ?>
         </div>
         <div class="canonical">
-            {{ (old('canonical')) ? config('app.url').(old('canonical')).config('apps.general.suffix') : 'https://duong-dan-cua-ban.html' }}
+            <?=(!empty($data['postCatalogue']['canonical'])) ? 'http://localhost/myblog/public/'.$data['postCatalogue']['canonical'].'.html' : 'https://duong-dan-cua-ban.html'?>
         </div>
         <div class="meta_description">
-            {{ (old('meta_description')) ?? 'Bạn chưa có mô tả SEO' }}
+            <?=(!empty($data['postCatalogue']['meta_description'])) ? $data['postCatalogue']['meta_description'] : 'Bạn chưa có mô tả SEO'?>
         </div>
     </div>
     <div class="seo-wrapper">
@@ -20,7 +20,7 @@
                 class="form-control" 
                 name="meta_title" 
                 placeholder="Nhập mô tả..."
-                value="{{ old('meta_title') }}"
+                value="<?=(isset($data['postCatalogue']['meta_title'])) ? $data['postCatalogue']['meta_title'] : $data['meta_title']?>"
             >
         </div>
 
@@ -31,7 +31,7 @@
                 class="form-control" 
                 name="meta_keyword" 
                 placeholder="Nhập từ khoá..."
-                value="{{ old('meta_keyword') }}"
+                value="<?=(isset($data['postCatalogue']['meta_keyword'])) ? $data['postCatalogue']['meta_keyword'] : $data['meta_keyword']?>"
             >
         </div>
 
@@ -44,8 +44,7 @@
                 class="form-control" 
                 name="meta_description" 
                 placeholder="Nhập ghi chú..."
-                value="{{ old('meta_description') }}"
-            >{{ old('meta_description') }}</textarea>
+            ><?=(isset($data['postCatalogue']['meta_description'])) ? $data['postCatalogue']['meta_description'] : $data['meta_description']?></textarea>
         </div>
 
         <div class="col-md-12">
@@ -56,9 +55,9 @@
                 type="text" 
                 class="form-control input-wapper" 
                 name="canonical" 
-                value="{{ old('canonical') }}"
+                value="<?=(isset($data['postCatalogue']['canonical'])) ? $data['postCatalogue']['canonical'] : $data['canonical']?>"
             >
-            <span class="baseUrl">{{ config('app.url') }}</span>
+            <span class="baseUrl"><?=$GLOBALS['config']['rootPath']?></span>
         </div>
     </div>
 </div>

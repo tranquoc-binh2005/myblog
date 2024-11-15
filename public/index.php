@@ -10,9 +10,13 @@ $routes = require_once '../Route/routing.php';
 
 $module = require_once '../Config/module.php';
 $sub = require_once '../Config/subTitle.php';
+$general = require_once '../Config/general.php';
+
 require_once '../Core/Alert.php';
+
 $GLOBALS['moduleConfig'] = $module;
 $GLOBALS['sub'] = $sub;
+$GLOBALS['general'] = $general;
 
 $db = new Database($config);
 

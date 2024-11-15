@@ -41,5 +41,19 @@ return [
                 ],
             ],
         ],
+        [
+            'title' => 'Source code',
+            'icon' => 'fe-code',
+            'subModule' => [
+                [
+                    'title' => 'Danh mục',
+                    'route' => 'danh-muc-code',
+                ],
+                [
+                    'title' => 'Sản phẩm',
+                    'route' => 'san-pham',
+                ],
+            ],
+        ],
     ],
 ];

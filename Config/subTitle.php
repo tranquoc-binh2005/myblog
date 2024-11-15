@@ -34,4 +34,12 @@ return [
             'create' => 'Tạo nhóm bài viết',
         ],
     ],
+    'post' => [
+        'title' => [
+            'index' => 'Danh sách bài viết',
+            'delete' => 'Xoá bài viết',
+            'update' => 'Cập nhật bài viết',
+            'create' => 'Tạo bài viết',
+        ],
+    ],
 ];
