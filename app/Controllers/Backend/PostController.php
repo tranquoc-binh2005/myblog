@@ -294,8 +294,8 @@ class PostController extends Controller
     public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($id)) {
-            $NestedSet = new NestedSet($this->db, 'posts', 'post_languages');
-            $result = $NestedSet->delete($id);
+            $Base = new Base($this->db);
+            $result = $Base->delete($id, 'posts');
             if ($result) {
                 alertSuccess('Thành công', 'Xoá bản ghi thành công', '../bai-viet');
             } else {

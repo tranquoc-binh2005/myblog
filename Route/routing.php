@@ -8,10 +8,14 @@ use App\Controllers\Backend\LanguageController;
 use App\Controllers\Backend\PostCatalogueController;
 use App\Controllers\Backend\PostController;
 use App\Controllers\Backend\CatalogueController;
+use App\Controllers\Backend\ProductController;
 use App\Controllers\Backend\UserController as BackendUserController;
+
 use App\Controllers\Ajax\ChangeStatusController;
 
 use App\Controllers\HomeController;
+use App\Controllers\BlogController;
+use App\Controllers\ProductController as FrontendProductController;
 use App\Controllers\UserController as FrontendUserController;
 use App\Controllers\AuthController;
 $routes = [
@@ -70,6 +74,15 @@ $routes = [
     '/xoa-danh-muc-code-vinh-vien/{id}' => [CatalogueController::class, 'delete'],
     '/hoan-tac-danh-muc-code/{id}' => [CatalogueController::class, 'restore'],
 
+    '/san-pham' => [ProductController::class, 'index'],
+    '/san-pham-da-xoa' => [ProductController::class, 'deleted'],
+    '/tao-san-pham' => [ProductController::class, 'store'],
+    '/xu-ly-tao-san-pham' => [ProductController::class, 'store'],
+    '/xoa-san-pham/{id}' => [ProductController::class, 'softdelete'],
+    '/sua-san-pham/{id}' => [ProductController::class, 'update'],
+    '/xoa-san-pham-vinh-vien/{id}' => [ProductController::class, 'delete'],
+    '/hoan-tac-san-pham/{id}' => [ProductController::class, 'restore'],
+
 
     '/change-status' => [ChangeStatusController::class, 'changeStatus'],
     '/change-statusAll' => [ChangeStatusController::class, 'changeStatusAll'],
@@ -77,6 +90,12 @@ $routes = [
 
     '/' => [HomeController::class, 'index'],
     '/trang-chu' => [HomeController::class, 'index'],
+
+    '/source-code' => [FrontendProductController::class, 'index'],
+    '/source-code/{slug}' => [FrontendProductController::class, 'detail'],
+    '/blog' => [BlogController::class, 'index'],
+    '/blog/{slug}' => [BlogController::class, 'detail'],
+
     '/dang-nhap' => [AuthController::class, 'login'],
     '/xu-ly-dang-nhap' => [AuthController::class, 'login'],
     '/dang-xuat' => [AuthController::class, 'logout'],

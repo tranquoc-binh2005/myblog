@@ -176,7 +176,15 @@ class NestedSet
             $countSql .= " AND tb1.publish = {$publishCondition}";
         }
 
-        $sql .= " ORDER BY id ASC LIMIT $perPage OFFSET $offset";
+        $orderByRules = [
+            'product_id' => 'id DESC',
+            'post_id' => 'id DESC',
+            'catalogue_id' => 'lft ASC',
+            'post_catalogue_id' => 'lft ASC',
+        ];
+
+        $orderBy = $orderByRules[$primary] ?? 'id ASC';
+        $sql .= " ORDER BY $orderBy LIMIT $perPage OFFSET $offset";
 
         $result = $this->db->getAll($sql);
 
@@ -193,13 +201,12 @@ class NestedSet
         ];
     }
 
-    public function update($payload, $id)
+    public function update($payload, $id, $primary)
     {
         $node = $this->getNode($id);
         $oldNodeRgt = $node['rgt'];
         $parent = $this->getNode($payload['parent_id']);
         if ($node['parent_id'] != $payload['parent_id']){
-
             $newPosition = $parent['rgt'];
             $width = $node['rgt'] - $node['lft'] + 1;
 
@@ -243,8 +250,8 @@ class NestedSet
         $table1Data = array_intersect_key($payload, array_flip($payload['table']));
         $table2Data = array_intersect_key($payload, array_flip($payload['pivot']));
 
-        $updatedTable1 = $this->buildUpdateQuery($this->table, $table1Data, 'id', $id);
-        $updatedTable2 = $this->buildUpdateQuery($this->tablePivot, $table2Data, 'post_catalogue_id', $id);
+        $updatedTable1 = $this->buildUpdateQuery($this->table, $table1Data, $primary[0], $id);
+        $updatedTable2 = $this->buildUpdateQuery($this->tablePivot, $table2Data, $primary[1], $id);
 
         return true;
     }
@@ -265,6 +272,7 @@ class NestedSet
         }
     
         $sql = "UPDATE $table SET " . implode(', ', $updateFields) . " WHERE `$idColumn` = :id";
+
         $params[':id'] = $idValue;
     
         $this->db->execute($sql, $params); 

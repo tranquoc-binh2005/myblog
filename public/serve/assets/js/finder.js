@@ -25,7 +25,7 @@ setupCkEditor = () => {
                     'undo',
                     'redo',
                     '|',
-                    'CKFinder' // Thêm CKFinder vào toolbar
+                    'CKFinder'
                 ],
                 shouldNotGroupWhenFull: true,
             },

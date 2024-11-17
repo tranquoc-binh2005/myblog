@@ -110,100 +110,10 @@
         </article>
     </div>
 </section> -->
-<div>
-    <div class="container mt-20 mb-20">
-        <div class="container">
-            <div class="title mg"> <br>
-                <h1 class="text-uppercase"><span class="text-gradient-primary-2 mt-10">SourceCode</span> Chất lượng</h1>
-            </div>
-            <section class="source">
-                <article class="source-box">
-                    <div class="source-box-img">
-                        <img src="client/assets/image/src1.png" loading="lazy" alt="Do an laravel 10">
-                    </div>
-                    <div class="soure-box-text">
-                        <h3 class="mb-10"><a href="">Project Laravel 10 chat luong cao de su dung khong gap van de hu la bao tri hu la sua</a></h3>
-                        <span class="pl-20 price-new">500,000d</span>&nbsp;
-                        <span class="mt-10 price-old">1,500,000d</span>&nbsp; &nbsp;
-                        <span class="btn-sale">50%</span>
-                    </div>
-                </article>
-                <article class="source-box">
-                    <div class="source-box-img">
-                        <img src="client/assets/image/src1.png" loading="lazy" alt="Do an laravel 10">
-                    </div>
-                    <div class="soure-box-text">
-                        <h3 class="mb-10"><a href="">Project Laravel 10 chat luong cao de su dung khong gap van de hu la bao tri hu la sua</a></h3>
-                        <span class="pl-20 price-new">500,000d</span>&nbsp;
-                        <span class="mt-10 price-old">1,500,000d</span>&nbsp; &nbsp;
-                        <span class="btn-sale">50%</span>
-                    </div>
-                </article>
-                <article class="source-box">
-                    <div class="source-box-img">
-                        <img src="client/assets/image/src1.png" loading="lazy" alt="Do an laravel 10">
-                    </div>
-                    <div class="soure-box-text">
-                        <h3 class="mb-10"><a href="">Project Laravel 10 chat luong cao de su dung khong gap van de hu la bao tri hu la sua</a></h3>
-                        <span class="pl-20 price-new">500,000d</span>&nbsp;
-                        <span class="mt-10 price-old">1,500,000d</span>&nbsp; &nbsp;
-                        <span class="btn-sale">50%</span>
-                    </div>
-                </article>
-                <article class="source-box">
-                    <div class="source-box-img">
-                        <img src="client/assets/image/src1.png" loading="lazy" alt="Do an laravel 10">
-                    </div>
-                    <div class="soure-box-text">
-                        <h3 class="mb-10"><a href="">Project Laravel 10 chat luong cao de su dung khong gap van de hu la bao tri hu la sua</a></h3>
-                        <span class="pl-20 price-new">500,000d</span>&nbsp;
-                        <span class="mt-10 price-old">1,500,000d</span>&nbsp; &nbsp;
-                        <span class="btn-sale">50%</span>
-                    </div>
-                </article>
-            </section>
-        </div>
-    </div>
-</div> <!--end section 3-->
 
+<?php include 'source.php'?>
 
-<section class="container mt-20">
-    <div class="title mt-20">
-        <h1 class="text-uppercase">Blog</h1>
-    </div>
-    <div class="blog">
-        <article class="blog-box" itemscope itemtype="http://schema.org/BlogPosting">
-            <div class="blog-box-img">
-                <img src="client/assets/image/src2.png" alt="">
-            </div>
-            <div class="blog-box-text">
-                <a href="" class="btn-tag">Huu ich</a>
-                <h3 class="mt-10" itemprop="headline"><a href="">Bài viết 1 Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.</a></h3>
-                <p itemprop="description">Mô tả ngắn cho bài viết 1Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1..</p>
-            </div>
-        </article>
-        <article class="blog-box" itemscope itemtype="http://schema.org/BlogPosting">
-            <div class="blog-box-img">
-                <img src="client/assets/image/laravel.png" alt="">
-            </div>
-            <div class="blog-box-text">
-                <a href="" class="btn-tag">Cong nghe</a>
-                <h3 class="mt-10" itemprop="headline"><a href="">Bài viết 1 Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.</a></h3>
-                <p itemprop="description">Mô tả ngắn.</p>
-            </div>
-        </article>
-        <article class="blog-box" itemscope itemtype="http://schema.org/BlogPosting">
-            <div class="blog-box-img">
-                <img src="client/assets/image/mvc.webp" alt="">
-            </div>
-            <div class="blog-box-text">
-                <a href="" class="btn-tag">Cong nghe</a>
-                <h3 class="mt-10" itemprop="headline"><a href="">Bài viết 1 Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.Mô tả ngắn cho bài viết 1.</a></h3>
-                <p itemprop="description">Mô tả ngắn.</p>
-            </div>
-        </article>
-    </div>
-</section> <!--end section 4-->
+<?php include 'blog.php'?>
 
 <section class="container mt-20">
     <article class="form-contact bg-form-contact mt-10">
@@ -219,11 +129,11 @@
             </aside>
         </div>
         <div class="form-contact-box-2 bg-light">
-            <form action="" class="inputFrom-contact pd-20">
+            <form action="" method="GET" class="inputFrom-contact pd-20">
             <div class="mb-20 col-12">
                 <div class="col-12">
                     <label for="name" class="">Tên</label>
-                    <input placeholder="Họ tên" type="text" id="name" required="">
+                    <input placeholder="Họ tên" type="text" id="name" name="keyword" required="">
                 </div>
             </div>
 

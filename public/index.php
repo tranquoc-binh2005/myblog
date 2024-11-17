@@ -31,16 +31,41 @@ $uri = str_replace($basePath, '', $uri);
 
 $found = false;
 
+// foreach ($routes as $route => $action) {
+//     if (strpos($route, '{id}') !== false) {
+//         $regex = preg_replace('/{id}/', '(\d+)', $route);
+//         if (preg_match('#^' . $regex . '$#', $uri, $matches)) {
+//             $found = true;
+//             array_shift($matches);
+//             [$controller, $method] = $action;
+
+//             $controllerInstance = createController($controller, $db);
+//             call_user_func([$controllerInstance, $method], $matches[0]);
+//             break;
+//         }
+//     } elseif ($uri === $route) {
+//         $found = true;
+//         [$controller, $method] = $action;
+
+//         $controllerInstance = createController($controller, $db);
+//         call_user_func([$controllerInstance, $method]);
+//         break;
+//     }
+// }
+
 foreach ($routes as $route => $action) {
-    if (strpos($route, '{id}') !== false) {
-        $regex = preg_replace('/{id}/', '(\d+)', $route);
+    if (strpos($route, '{id}') !== false || strpos($route, '{slug}') !== false) {
+        $regex = $route;
+        $regex = preg_replace('/{id}/', '(\d+)', $regex);
+        $regex = preg_replace('/{slug}/', '([\w\-]+)', $regex); // Cho phép slug chứa chữ, số, và dấu gạch ngang
+        
         if (preg_match('#^' . $regex . '$#', $uri, $matches)) {
             $found = true;
-            array_shift($matches);
+            array_shift($matches); // Loại bỏ match đầu tiên (toàn bộ chuỗi)
             [$controller, $method] = $action;
 
             $controllerInstance = createController($controller, $db);
-            call_user_func([$controllerInstance, $method], $matches[0]);
+            call_user_func_array([$controllerInstance, $method], $matches); // Truyền tham số vào method
             break;
         }
     } elseif ($uri === $route) {
@@ -52,6 +77,7 @@ foreach ($routes as $route => $action) {
         break;
     }
 }
+
 
 if (!$found) {
     http_response_code(404);

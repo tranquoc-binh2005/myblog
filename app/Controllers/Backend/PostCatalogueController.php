@@ -185,7 +185,7 @@ class PostCatalogueController extends Controller
             $validationResult = $request->store($data);
             if (isset($validationResult['success'])) {
                 $NestedSet = new NestedSet($this->db, 'post_catalogues', 'post_catalogue_language');
-                $result = $NestedSet->update($data, $id);
+                $result = $NestedSet->update($data, $id, ['id', 'post_catalogue_id']);
 
                 if ($result) {
                     alertSuccess('Thành công', 'Cập nhật bản ghi thành công', '../nhom-bai-viet');

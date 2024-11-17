@@ -36,13 +36,12 @@
                     <select name="post_catalogue_id" class="form-control select-2">
                         <option value="-1">Chọn danh mục cha</option>
                         <?php
-                        // print_r($data);
                         foreach ($data['dropDowns'] as $key => $dropDown) {
                             $depth = intval($dropDown['depth']) - 1;
                             if ($depth >= 0) {
                                 $prefix = str_repeat('|--', $depth);
                             }
-                            $selected = $data['post_catalogue_id'] == $dropDown['id'] ? 'selected' : '';
+                            $selected = $data['post']['parent_id'] == $dropDown['id'] ? 'selected' : '';
                             echo '<option value="' . $dropDown['id'] . '" ' . $selected . '>' . $prefix . htmlspecialchars($dropDown['name']) . '</option>';
                         }
                         ?>
@@ -58,6 +57,7 @@
                             foreach ($data['catalogue'] as $val) {
                                 foreach ($data['dropDowns'] as $key => $dropDown) {
                                     $depth = intval($dropDown['depth']) - 1;
+                                    $prefix = '';
                                     if ($depth >= 0) {
                                         $prefix = str_repeat('|--', $depth);
                                     }
@@ -69,6 +69,7 @@
                         else {
                             foreach ($data['dropDowns'] as $key => $dropDown) {
                                 $depth = intval($dropDown['depth']) - 1;
+                                $prefix = '';
                                 if ($depth >= 0) {
                                     $prefix = str_repeat('|--', $depth);
                                 }
@@ -85,11 +86,11 @@
                 <div class="form-group col-md-12 bg-light text-center">
                     <span class="image img-cover">
                         <img id="ckAvataImg" width="150px" class="image-target"
-                            src="<?= isset($data['image']) && !empty($data['image']) ? $data['image'] : 'serve/assets/images/no_image.jpg' ?>"
+                            src="<?= isset($data['post']['image']) && !empty($data['post']['image']) ? $data['post']['image'] : 'serve/assets/images/no_image.jpg' ?>"
                             alt="no images">
                     </span>
                     <input type="hidden" id="ckAvata" class="ck-target" name="image"
-                        value="<?= $data['image'] ?>">
+                        value="<?= $data['post']['image'] ?>">
                 </div>
             </div>
 

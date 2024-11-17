@@ -12,8 +12,8 @@
         </div>
         <div id="imageContainer" class="image-container">
             <?php
-            if(isset($data['album']) && is_array($data['album'])){
-                foreach ($data['album'] as $key => $value) {
+            if(isset($data['post']['album']) && is_array($data['post']['album'])){
+                foreach ($data['post']['album'] as $key => $value) {
             ?>
             <span class="image-wrapper">
                 <img class="multipleUploadImage uploaded-image" id="ckAlbum" src="<?=$value?>" alt="<?=$value?>">

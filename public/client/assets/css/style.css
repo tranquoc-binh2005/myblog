@@ -68,6 +68,12 @@
   margin: auto;
 }
 
+
+.container-small {
+  width: 920px;
+  margin: auto;
+}
+
 .fvh {
   height: 100vh !important;
 }
@@ -393,7 +399,7 @@ select:focus {
   padding: 10px 20px;
   background: var(--si-gray-300);
   color: var(--si-gray-900);
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   font-weight: lighter;
   transition: background-color 0.3s ease;
@@ -404,7 +410,7 @@ select:focus {
   background: var(--si-green-400);
   color: var(--si-gray-900);
   font-weight: lighter;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border: none;
@@ -538,6 +544,18 @@ header.fixed {
   display: flex;
   margin-left: 20px;
   font-weight: lighter;
+  /* position: relative;
+  left: 100px; */
+}
+
+.box-sizing{
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+
+.position-lft{
+  position: relative;
+  left: -70px !important;
 }
 
 .container-header-box>div a {
@@ -551,6 +569,8 @@ header.fixed {
 .container-header-img img {
   width: 150px;
   height: auto;
+  position: relative;
+  left: -50px;
 }
 
 .bg-secondary {
@@ -824,7 +844,7 @@ header.fixed {
     padding: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    /* Giới hạn số dòng */
+    width: 100%;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -859,8 +879,8 @@ header.fixed {
   min-height: 100px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background: #fff;
-  /* border-radius: 15px; */
-  min-height: 350px;
+  border-radius: 10px;
+  min-height: 330px;
 }
 
 .soure-box-text {
@@ -870,9 +890,9 @@ header.fixed {
 .source-box-img {
   height: 200px;
   overflow: hidden;
-  border-radius: 15px;
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
+  /* border-radius: 15px; */
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
 }
 
 .source-box-img img {
@@ -947,8 +967,8 @@ header.fixed {
 .blog-box-img {
   height: 250px;
   overflow: hidden;
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
   /* border-bottom-left-radius: 0 !important; */
   /* border-bottom-right-radius: 0 !important; */
 }
@@ -964,8 +984,9 @@ header.fixed {
   padding: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background: #fff;
-  min-height: 150px;
-  max-height: 200px;
+  /* min-height: 100px; */
+  /* max-height: 200px; */
+  height: 180px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   position: relative;
@@ -978,7 +999,7 @@ header.fixed {
 
 .blog-box-text h3 {
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1118,4 +1139,101 @@ footer {
   border: 1px solid var(--si-gray-300);
   padding: 20px 10px;
   border-radius: 5px;
+}
+
+.btn-account {
+  position: relative;
+}
+.dropdown-account{
+  position: absolute;
+  bottom: -135px;
+  background: white;
+  padding: 0 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: none;
+  color: black;
+  box-sizing: border-box;
+}
+.dropdown-account li a{
+  color: black;
+}
+
+.btn-account:hover .dropdown-account {
+  display: block;
+}
+
+.btn-account li a:hover{
+  color: #01859d;
+}
+
+.dropdown-account li {
+  margin: 10px;
+  display: block;
+  width: 100%;
+}
+
+.maintitle{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.right-0{
+  position: absolute;
+  right: 10px;
+}
+.bg-gold{
+  background: gold;
+}
+.font-size-30{
+  font-size: 40px;
+}
+
+.attr-box{
+  display: grid;
+  gap: 20px;
+  padding: 20px;  
+}
+
+
+@media (min-width: 1024px) {
+  .attr-box {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .attr-box {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .attr-box {
+      grid-template-columns: 1fr;
+  }
+}
+
+.attribute {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.attribute h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.attribute img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.attribute p {
+  font-size: 1em;
+  color: #666;
 }

@@ -170,9 +170,15 @@ class Post
         }
         return $cataloguesName;
     }
-    private function loadNameCatalogue($id)
+    public function loadParentCatalogue($id)
     {
-        return $this->db->getOne('SELECT name, post_catalogue_id as id FROM post_catalogue_language WHERE post_catalogue_id = :post_catalogue_id', ['post_catalogue_id'=>$id]);
+        $catalogues = $this->db->getOne('SELECT post_catalogue_id,name FROM post_catalogue_language WHERE post_catalogue_id = :post_catalogue_id', ['post_catalogue_id'=>$id]);
+
+        return $catalogues;
+    }
+    public function loadNameCatalogue($id)
+    {
+        return $this->db->getOne('SELECT canonical, name, post_catalogue_id as id FROM post_catalogue_language WHERE post_catalogue_id = :post_catalogue_id', ['post_catalogue_id'=>$id]);
     }
 
     public function loadPost($condition = [], $join = [], $id)
@@ -236,4 +242,59 @@ class Post
             'id' => $id
         ];
     }
+
+    public function getBlogWithCataloge($condition, $catalogue_id, $keyword)
+    {
+        $flattenedCondition = array_merge(...$condition);
+        $selectColumns = implode(', ', $flattenedCondition);
+
+        $sql = "SELECT $selectColumns
+                FROM `posts` AS tb1
+                JOIN `post_languages` AS tb2 
+                ON tb1.id = tb2.post_id
+                WHERE 1=1";
+
+        $params = [];
+
+        if (!empty($catalogue_id) && ($catalogue_id > 1)) {
+            $sql .= " AND tb1.post_catalogue_id = ?";
+            $params[] = $catalogue_id;
+        }
+
+        if (!empty($keyword)) {
+            $sql .= " AND tb2.name LIKE ?";
+            $params[] = '%' . $keyword . '%';
+        }
+
+        return $this->db->getAll($sql, $params);
+    }
+
+    public function getBlogWithSlug($condition, $slug)
+    {
+        $flattenedCondition = array_merge(...$condition);
+        $selectColumns = implode(', ', $flattenedCondition);
+
+        $sql = "SELECT $selectColumns
+                FROM `posts` AS tb1
+                JOIN `post_languages` AS tb2 
+                ON tb1.id = tb2.post_id
+                WHERE tb2.canonical = '$slug'";
+
+        return $this->db->getOne($sql);
+    }
+
+    public function getBlogAttrSlug($condition, $slug){
+        $flattenedCondition = array_merge(...$condition);
+        $selectColumns = implode(', ', $flattenedCondition);
+
+        $sql = "SELECT $selectColumns
+                FROM `posts` AS tb1
+                JOIN `post_languages` AS tb2 
+                ON tb1.id = tb2.post_id
+                WHERE tb2.canonical != '$slug'
+                LIMIT 4";
+
+        return $this->db->getAll($sql);
+    }
+
 }

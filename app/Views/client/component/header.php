@@ -11,39 +11,36 @@
                     onclick="document.getElementById('dialogMenu').close()">X</button>
             </div>
             <nav class="menuBox box-mainMenu menu">
-                <div class="dropdown">
-                    <span class="dropdown-btn" id="serviceMenu">Dịch vụ <i class="fa-solid fa-caret-down"></i></span>
-                    <div class="dropdown-content">
-                        <div><a href="#">Thiết kế website</a></div>
-                        <div><a href="#">Thiết kế website</a></div>
-                        <div><a href="#">Thiết kế website</a></div>
-                        <div><a href="#">Thiết kế website</a></div>
-                    </div>
-                </div>
-                <a href="source.html">Source code</a>
-                <a href="blog.html">Blog</a>
-                <a href="#">Liên Hệ</a>
+                <a href="source-code">Source Code</a>
+                <a href="blog">Blog</a>
+                <a href="contact">Liên Hệ</a>
             </nav>
             <div class="menuBox clear-both">
                 <a href="dang-nhap" class="btn-login">Đăng nhập</a>
                 <a href="cart.html" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i> <span class="sz-s">Giỏ hàng</span> (0)</a>
             </div>
         </dialog>
-        <div class="container-header-box">
-            <div class="dropdown cl-box">
-                <a>Dịch vụ</a>
-                <ul class="dropdown-items">
-                    <li><a href="">Thiết kế website</a></li>
-                    <li><a href="">Bài tập lớn</a></li>
-                    <li><a href="">Hỗ trợ 1:1</a></li>
-                </ul>
-            </div>
-            <div class="cl-box"><a href="source.html">Source</a></div>
-            <div class="cl-box"><a href="blog.html">Blog</a></div>
-            <div class="cl-box"><a href="contact.html">Contact</a></div>
+        <div class="container-header-box position-lft">
+            <div class="cl-box"><a href="source-code">Source Code</a></div>
+            <div class="cl-box"><a href="blog">Blog</a></div>
+            <div class="cl-box"><a href="contact">Contact</a></div>
         </div>
         <div class="container-header-box gap-10">
-            <a href="dang-nhap" class="btn-login">Đăng nhập</a>
+            <?php
+                if(isset($_SESSION['user']) && (is_array($_SESSION['user']))){?>
+                    <div class="btn-account">
+                        <a class="btn-login" href="dang-nhap"> 
+                            <i class="fa-solid fa-user"></i>&nbsp;Tài khoản
+                        </a>
+                        <ul class="dropdown-account">
+                            <li><a href="thong-tin">Thông tin</a></li>
+                            <li><a href="lich-su-don-hang">Lịch sử đơn hàng</a></li>
+                            <li><a href="dang-xuat">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+            <?php } else {?>
+                <a href="dang-nhap" class="btn-login">Đăng nhập</a>
+            <?php }?>
             <a href="cart.html" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng (0)</a>
         </div>
     </div>

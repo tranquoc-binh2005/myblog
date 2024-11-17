@@ -42,4 +42,20 @@ return [
             'create' => 'Tạo bài viết',
         ],
     ],
+    'catalogue' => [
+        'title' => [
+            'index' => 'Danh sách danh mục',
+            'delete' => 'Xoá danh mục',
+            'update' => 'Cập nhật danh mục',
+            'create' => 'Tạo danh mục',
+        ],
+    ],
+    'product' => [
+        'title' => [
+            'index' => 'Danh sách sản phẩm',
+            'delete' => 'Xoá sản phẩm',
+            'update' => 'Cập nhật sản phẩm',
+            'create' => 'Tạo sản phẩm',
+        ],
+    ],
 ];
