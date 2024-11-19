@@ -492,7 +492,7 @@ class Logger implements LoggerInterface, ResettableInterface
             }
 
             // Contains first char of all log levels and avoids using strtoupper() which may have
-            // strange results depending on locale (for example, "i" will become "İ" in Turkish locale)
+            // strange results depending on locale (for example, "i" will become "力" in Turkish locale)
             $upper = strtr(substr($level, 0, 1), 'dinweca', 'DINWECA') . strtolower(substr($level, 1));
             if (defined(Level::class.'::'.$upper)) {
                 return constant(Level::class . '::' . $upper);
@@ -562,7 +562,7 @@ class Logger implements LoggerInterface, ResettableInterface
      *
      * @phpstan-param Level|LogLevel::* $level
      */
-    public function log($level, string|\Stringable $message, array $context = []): void
+    public function log($level, $message, array $context = []): void
     {
         if (!$level instanceof Level) {
             if (!is_string($level) && !is_int($level)) {
@@ -587,7 +587,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function debug(string|\Stringable $message, array $context = []): void
+    public function debug($message, array $context = []): void
     {
         $this->addRecord(Level::Debug, (string) $message, $context);
     }
@@ -600,7 +600,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function info(string|\Stringable $message, array $context = []): void
+    public function info($message, array $context = []): void
     {
         $this->addRecord(Level::Info, (string) $message, $context);
     }
@@ -613,7 +613,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function notice(string|\Stringable $message, array $context = []): void
+    public function notice($message, array $context = []): void
     {
         $this->addRecord(Level::Notice, (string) $message, $context);
     }
@@ -626,7 +626,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function warning(string|\Stringable $message, array $context = []): void
+    public function warning($message, array $context = []): void
     {
         $this->addRecord(Level::Warning, (string) $message, $context);
     }
@@ -639,7 +639,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function error(string|\Stringable $message, array $context = []): void
+    public function error($message, array $context = []): void
     {
         $this->addRecord(Level::Error, (string) $message, $context);
     }
@@ -652,7 +652,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function critical(string|\Stringable $message, array $context = []): void
+    public function critical($message, array $context = []): void
     {
         $this->addRecord(Level::Critical, (string) $message, $context);
     }
@@ -665,7 +665,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function alert(string|\Stringable $message, array $context = []): void
+    public function alert($message, array $context = []): void
     {
         $this->addRecord(Level::Alert, (string) $message, $context);
     }
@@ -678,7 +678,7 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      */
-    public function emergency(string|\Stringable $message, array $context = []): void
+    public function emergency($message, array $context = []): void
     {
         $this->addRecord(Level::Emergency, (string) $message, $context);
     }

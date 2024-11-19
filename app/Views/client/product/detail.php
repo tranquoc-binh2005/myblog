@@ -1,19 +1,19 @@
 <div class="container-small">
     <ol class="breadcrumb mb-20 mt-20">
-        <li class="breadcrumb-item">
-            <a href="https://vinhweb.com"><i class="bx bx-home-alt fs-lg me-1"></i>Home</a>
+        <li class="">
+            <a href="trang-chu"></i>Home</a>\
         </li>
-        <li class="breadcrumb-item">
-            <a href="https://vinhweb.com/products">Sản phẩm</a>
+        <li class="">
+            <a href="source-code">Source-code</a>\
         </li>
-        <li class="breadcrumb-item active">Source code Website đặt đồ ăn NextJS</li>
+        <li class="active"><?= $data['detail']['canonical'] ?></li>
     </ol>
     <div class="col-lg-12">
         <div class="row mb-4 pb-2">
             <div class="col-lg-6">
                 <img class="rounded w-100"
-                    src="https://vinhweb.com/storage/products/8r6lzDkHZNRfi6CGLNjDNdaDqTb7BGq5NBzNsX1h.png"
-                    alt="Source code Website đặt đồ ăn NextJS">
+                    src="<?= $data['detail']['image'] ?>"
+                    alt="<?= $data['detail']['name'] ?>">
             </div>
             <div class="col-lg-6">
                 <h1 class="fs-2 mb-1"><?= $data['detail']['name'] ?></h1>
@@ -21,7 +21,7 @@
                 <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-4">
                     <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-3 d-none">
 
-                        <div class="fs-sm border-end pe-3 me-3 mb-2">15-09-2024 23:19:46</div>
+                        <div class="fs-sm border-end pe-3 me-3 mb-2"><h1>15-09-2024 23:19:46</h1></div>
                         <div class="d-flex mb-2">
                             <div class="d-none align-items-center me-3">
                                 <i class="bx bx-like fs-base me-1"></i>
@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="d-flex align-items-center gap-3">
-                    <div class="btn-cart">mua ngay</div>
-                    <div class="btn-cart">gio hang</div>
+                    <div class="btn-cart">Mua ngay</div>
+                    <div class="btn-cart">Thêm vào giỏ hàng</div>
                 </div>
             </div>
         </div>

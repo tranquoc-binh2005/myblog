@@ -15,29 +15,4 @@
             <?php include 'prod.php';?>
         </section>
     </form>
-
-    <?php
-    $currentPage = $data['products']['current_page'];
-    $totalPages = $data['products']['total_pages'];
-    ?>
-    <ul class="pagination right-0">
-        <li class="page-item <?= $currentPage == 1 ? 'disabled' : '' ?>">
-            <a class="page-link" href="source-code?page=<?= $currentPage - 1 ?>&keyword=<?=$data['keyword']?>" aria-label="Previous">
-                <span aria-hidden="true">«</span>
-                <span class="sr-only">Previous</span>
-            </a>
-        </li>
-
-        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
-            <a class="page-link" href="source-code?page=<?= $i ?>&keyword=<?=$data['keyword']?>"><?= $i ?></a>
-        </li>
-        <?php endfor; ?>
-
-            <a class="page-link" href="source-code?page=<?= $currentPage + 1 ?>&keyword=<?=$data['keyword']?>" aria-label="Next">
-                <span aria-hidden="true">»</span>
-                <span class="sr-only">Next</span>
-            </a>
-        </li>
-    </ul>
 </section>

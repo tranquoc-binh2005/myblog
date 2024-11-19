@@ -10,8 +10,7 @@
  * modifying or distribute this file or part of its contents. The contents of
  * this file is part of the Source Code of CKFinder.
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 use CKSource\CKFinder\CKFinder;

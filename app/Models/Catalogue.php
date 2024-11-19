@@ -9,7 +9,7 @@ class Catalogue
     private $db;
 
     public function __construct(
-        Database $db, 
+        Database $db
     )
     {
         $this->db = $db;

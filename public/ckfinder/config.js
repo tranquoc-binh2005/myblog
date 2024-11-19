@@ -1,10 +1,14 @@
-var config = {
-    language: 'vi',
-    skin: 'jquery-mobile',
-    uploadUrl: BASE_URL + '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
-    basePath: BASE_URL + '/userfiles/',
-    authentication: function() {
-        return true;
-    }
-};
-CKFinder.define(config);
+/*
+ Copyright (c) 2007-2024, CKSource Holding sp. z o.o. All rights reserved.
+ For licensing, see LICENSE.html or https://ckeditor.com/sales/license/ckfinder
+ */
+
+var config = {};
+
+// Set your configuration options below.
+
+// Examples:
+// config.language = 'pl';
+// config.skin = 'jquery-mobile';
+
+CKFinder.define( config );

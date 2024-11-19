@@ -19,6 +19,11 @@ class AuthController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data['body'] = 'login';
             $data['template'] = 'auth/login';
+            $data['config'] = [
+                'css' => [
+                    '<link rel="stylesheet" href="client/assets/css/style.css">',
+                ],
+            ];
             $this->view('client/index', ['data' => $data]);
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

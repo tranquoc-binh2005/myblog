@@ -1,3 +1,4 @@
+<?php $config = $GLOBALS['config'] ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'component/head.php';?>

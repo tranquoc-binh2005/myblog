@@ -1,14 +1,14 @@
-<section class="container">
-    <h1>Bai viet lien quan</h1>
+<section class="container mb-10">
+    <h1 headline class="mb-10 mt-10">Source code liên quan</h1>
     <section class="source">
         <?php foreach ($data['productAttr'] as $product) { ?>
-        <article class="source-box">
+        <article class="source-box" itemscope itemtype="http://schema.org/BlogPosting">
             <div class="source-box-img">
                 <img src="<?= htmlspecialchars($product['image']) ?>" loading="lazy"
                     alt="<?= htmlspecialchars($product['name']) ?>">
             </div>
             <div class="soure-box-text">
-                <h3 class="mb-10">
+                <h3 itemprop="headline" class="mb-10">
                     <a href="source-code/<?= htmlspecialchars($product['canonical']) ?>">
                         <?= htmlspecialchars($product['name']) ?>
                     </a>

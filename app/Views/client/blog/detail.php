@@ -2,12 +2,11 @@
     <h1 class="font-size-30"><?= $data['detail']['name'] ?></h1>
     <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between">
         <div class="d-flex align-items-center flex-wrap text-muted">
-            <a href="https://vinhweb.com/category/tin-tuc" class="fs-xs border-end pe-3 me-3 mb-2">
+            <a href="blog?cat=<?=$data['detail']['post_catalogue_id']?>" class="fs-xs border-end pe-3 me-3 mb-2">
                 <span class="badge bg-faded-primary text-primary fs-base">
                     <?= $data['detail']['nameCatalogue'] ?>
                 </span>
             </a>
-
             <div class="fs-sm border-end pe-3 me-3 mb-2">
                 <?= date('H:i d-m-Y', strtotime($data['detail']['updated_at'])) ?>
             </div>

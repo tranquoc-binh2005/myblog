@@ -1,5 +1,5 @@
 <head>
-    <base href="http://localhost/myblog/public/">
+    <base href="<?=$config['rootPath']?>">
     <meta charset="utf-8">
     <title>Upvex - <?=$data['title']?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,8 +22,4 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-    <script>
-        var BASE_URL = 'http://localhost/myblog/public/';
-        var SUFFIX = '.html';
-    </script>
 </head>

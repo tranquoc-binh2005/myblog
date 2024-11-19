@@ -38,9 +38,24 @@ class BlogController extends Controller {
             $val['nameCatalogue'] = $Post->loadNameCatalogue($val['post_catalogue_id'])['name'];
             $val['canonicalCatalogue'] = $Post->loadNameCatalogue($val['post_catalogue_id'])['canonical'];
         }
+        $data['seo'] = [
+            'meta_title' => 'Source-code | QUOCBINH.ORG | Giải pháp IT dành cho bạn',
+            'meta_keyword' => 'Lập trình web - Fullstack - Laravel - Tự học lập trình - Lập trình cơ bản',
+            'meta_description' => 'Giải pháp IT dành cho bạn',
+            'canonical' => 'blog',
+            'image' => '',
+            'nameWeb' => 'QUOCBINH ORG | Giải pháp IT dành cho bạn'
+        ];
+        $data['title'] = 'Blog | QUOCBINH.ORG | Giải pháp IT dành cho bạn';
+
+        $data['config'] = [
+            'css' => [
+                '<link rel="stylesheet" href="client/assets/css/style.css">',
+            ],
+        ];
+
 
         $data['body'] = 'blog';
-        $data['title'] = 'Blog | QUOCBINH.ORG GIẢI PHÁP WEBSITE';
         $data['template'] = 'blog/index';
         $this->view('client/index', ['data' => $data]);
     }
@@ -50,16 +65,35 @@ class BlogController extends Controller {
         $Post = new Post($this->db);
         $condition = [
             [
-                'tb1.*',
+                'tb1.id',
+                'tb1.post_catalogue_id',
+                'tb1.image',
+                'tb1.updated_at',
+                'tb1.created_at',
             ],
             [
-                'tb2.*',
+                'tb2.name',
+                'tb2.canonical',
+                'tb2.content',
+                'tb2.description',
+                'tb2.meta_title',
+                'tb2.meta_keyword',
+                'tb2.meta_description',
             ],
         ];
         $data['detail'] = $Post->getBlogWithSlug($condition, $slug);
 
         $data['detail']['nameCatalogue'] = $Post->loadNameCatalogue($data['detail']['post_catalogue_id'])['name'];
         $data['detail']['catalogue'] = $Post->loadCatalogue($data['detail']['id']);
+
+        $data['seo'] = [
+            'meta_title' => $data['detail']['meta_title'],
+            'meta_keyword' => $data['detail']['meta_keyword'],
+            'meta_description' => $data['detail']['meta_description'],
+            'canonical' => 'blog/' .$data['detail']['canonical'],
+            'image' => $data['detail']['image'],
+            'nameWeb' => 'QUOCBINH ORG | Giải pháp IT dành cho bạn'
+        ];
 
         $conditionAttr = [
             [
@@ -78,8 +112,6 @@ class BlogController extends Controller {
         foreach ($data['postAttr'] as &$val) {
             $val['nameCatalogue'] = $Post->loadNameCatalogue($val['post_catalogue_id'])['name'];
         }
-
-        // print_r($data['postAttr']); die();
 
         $data['body'] = 'blog';
         $data['title'] = $data['detail']['name'];

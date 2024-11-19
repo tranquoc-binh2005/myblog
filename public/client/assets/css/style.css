@@ -858,12 +858,12 @@ header.fixed {
   }
 
   .source-box {
-    display: none;
+    width: 100%;
   }
 
-  .source-box:first-of-type {
+  /* .source-box:first-of-type {
     display: block;
-  }
+  } */
 
   .soure-box-text {
     width: 100%;

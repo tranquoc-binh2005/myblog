@@ -52,6 +52,24 @@ class ProductController extends Controller {
             ]
             ];
 
+        
+        $data['seo'] = [
+            'meta_title' => 'Source-code | QUOCBINH.ORG | Giải pháp IT dành cho bạn',
+            'meta_keyword' => 'Lập trình web - Fullstack - Laravel - Tự học lập trình - Lập trình cơ bản',
+            'meta_description' => 'Giải pháp IT dành cho bạn',
+            'canonical' => 'source-code',
+            'image' => '',
+            'nameWeb' => 'QUOCBINH ORG | Giải pháp IT dành cho bạn'
+        ];
+        $data['title'] = 'Source-code | QUOCBINH.ORG | Giải pháp IT dành cho bạn';
+
+        $data['config'] = [
+            'css' => [
+                '<link rel="stylesheet" href="client/assets/css/style.css">',
+            ],
+        ];
+
+
         $data['body'] = 'source';
         $data['template'] = 'product/index';
         $this->view('client/index', ['data' => $data]);
@@ -67,10 +85,13 @@ class ProductController extends Controller {
                 'tb1.price',
                 'tb1.sale',
                 'tb1.image',
+                'tb1.updated_at',
+                'tb1.created_at',
             ],
             [
                 'tb2.name',
                 'tb2.description',
+                'tb2.canonical',
                 'tb2.content',
                 'tb2.meta_title',
                 'tb2.meta_keyword',
@@ -82,6 +103,15 @@ class ProductController extends Controller {
         $data['detail']['catalogueName'] = $Product->loadNameCatalogue($data['detail']['parent_id'])['name'];
 
         $data['detail']['catalogue'] = $Product->loadCatalogue($data['detail']['id']);
+
+        $data['seo'] = [
+            'meta_title' => $data['detail']['meta_title'],
+            'meta_keyword' => $data['detail']['meta_keyword'],
+            'meta_description' => $data['detail']['meta_description'],
+            'canonical' => 'source-code/' .$data['detail']['canonical'],
+            'image' => $data['detail']['image'],
+            'nameWeb' => 'QUOCBINH ORG | Giải pháp IT dành cho bạn'
+        ];
 
         $conditionAttr = [
             [

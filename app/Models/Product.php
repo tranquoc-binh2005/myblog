@@ -27,7 +27,7 @@ class Product
         $meta_title = null,
         $meta_keyword = null,
         $meta_description = null,
-        $catalogue = null,
+        $catalogue = null
     ) {
         $this->db = $db;
         $this->parent_id = $parent_id;

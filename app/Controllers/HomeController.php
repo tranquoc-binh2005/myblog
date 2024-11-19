@@ -20,6 +20,24 @@ class HomeController extends Controller {
         $data['title'] = 'QUOCBINH.ORG | GIẢI PHÁP WEBSITE';
         $data['body'] = 'home';
         $data['template'] = 'home/index';
+
+        $data['seo'] = [
+            'meta_title' => 'QUOCBINH ORG | Giải pháp IT dành cho bạn',
+            'meta_keyword' => 'Lập trình web - Fullstack - Laravel - Tự học lập trình - Lập trình cơ bản',
+            'meta_description' => 'Blog của Quốc Bình, tổng hợp tài liệu kiến thức lập trình fullstack',
+            'canonical' => 'source-code',
+            'image' => '',
+            'nameWeb' => 'QUOCBINH ORG | Giải pháp IT dành cho bạn'
+        ];
+
+        $data['config'] = [
+            'css' => [
+                '<link rel="stylesheet" href="client/assets/css/style.css">',
+                '<link rel="stylesheet" href="client/assets/css/theme.css">',
+                '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">'
+            ],
+        ];
+
         $this->view('client/index', ['data' => $data]);
     }
 
@@ -32,6 +50,7 @@ class HomeController extends Controller {
                 'tb1.publish',
                 'tb1.id',
                 'tb1.post_catalogue_id',
+                'tb1.updated_at',
             ],
             $join = [
                 [

@@ -19,7 +19,7 @@ class PostCatalogue
         $album = null, 
         $publish = null, 
         $order = null, 
-        $user_id = null, 
+        $user_id = null
     )
     {
         $this->db = $db;

@@ -26,7 +26,7 @@ class Post
         $meta_keyword = null,
         $meta_description = null,
 
-        $catalogue = null,
+        $catalogue = null
     ) {
         $this->db = $db;
         $this->post_catalogue_id = $post_catalogue_id;

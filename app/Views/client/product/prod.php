@@ -1,4 +1,4 @@
-<section class="source-3 col-9 source-container-item">
+<section class="source-3 source-container-item">
     <?= empty($data['products']) ? '<p>Không có source code nào...</p>' : '' ?>
     <?php foreach ($data['products'] as $product) {?>
     <article class="source-box">

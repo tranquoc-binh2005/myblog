@@ -1,5 +1,5 @@
-<section class="container">
-    <h1 class="mt-10" headline>Bai viet lien quan</h1>
+<section class="container mb-10">
+    <h1 class="mt-10" headline>Bài viết liên quan</h1>
     <div class="blog">
         <?php foreach ($data['postAttr'] as $val) {?>
         <article class="blog-box" itemscope itemtype="http://schema.org/BlogPosting">

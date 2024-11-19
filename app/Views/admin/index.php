@@ -3,9 +3,6 @@
 <?php $config = $GLOBALS['config'] ?>
 <?php $app = $GLOBALS['app'] ?>
 <?php
-print_r($GLOBALS['app'])
-?>
-<?php
 if (!isset($_SESSION['user']) || $_SESSION['user']['userCatalogue_id'] != 2) {
     header('location: trang-chu');
     exit;
@@ -14,7 +11,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['userCatalogue_id'] != 2) {
 <!DOCTYPE html>
 <html lang="en">
     <?php include 'component/head.php';?>
-
     <body>
         <!-- Begin page -->
         <div id="wrapper">

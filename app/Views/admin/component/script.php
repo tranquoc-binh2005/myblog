@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-<script src="ckfinder\ckfinder.js"></script>
+<script src="ckfinder/ckfinder.js"></script>
 <script src="serve\assets\js\finder.js"></script>
 
 <script src="serve\assets/libs/switchery/switchery.min.js"></script>
@@ -25,3 +25,8 @@
 <!-- App js -->
 <script src="serve\assets\js\app.min.js"></script>
 
+<script>
+    var BASE_URL = <?=$config['rootPath']?>;
+    var base_url = <?=$config['rootPath']?>;
+    var SUFFIX = '.html';
+</script>

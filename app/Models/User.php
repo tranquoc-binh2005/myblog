@@ -17,7 +17,7 @@ class User
         $address = null,
         $phone = null,
         $email = null,
-        $password = null,
+        $password = null
     )
     {
         $this->db = $db;

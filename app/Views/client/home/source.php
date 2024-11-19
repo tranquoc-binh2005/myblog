@@ -7,6 +7,9 @@
             <section class="source">
                 <?php 
                 foreach ($data['products'] as $product) { 
+                    $originalPrice = intval($product['price']);
+                    $discount = intval($product['sale']);
+                    $finalPrice = ($discount > 0) ? $originalPrice * (1 - $discount / 100) : $originalPrice;
                 ?>
                 <article class="source-box">
                     <div class="source-box-img">
@@ -20,15 +23,13 @@
                             </a>
                         </h3>
                         <span class="pl-20 price-new">
-                            <?php
-                            echo (intval($product['sale']) > 0) ? number_format(intval($product['price']), 0, ',', '.') :  number_format(intval($product['price']), 0, ',', '.') .'đ'
-                            ?>
+                            <?= number_format($finalPrice, 0, ',', '.') . 'đ' ?>
                         </span>&nbsp;
 
-                        <?php if (intval($product['sale']) > 0): ?>
-                        <span class="mt-10 price-old"><?=number_format(intval($product['price']), 0, ',', '.').'đ'?></span>&nbsp;&nbsp;
-                        <span class="btn-sale">-<?= htmlspecialchars(intval($product['sale'])) ?>%</span>
-                        <?php endif;?>
+                        <?php if ($discount > 0): ?>
+                        <span class="mt-10 price-old"><?= number_format($originalPrice, 0, ',', '.') . 'đ' ?></span>&nbsp;&nbsp;
+                        <span class="btn-sale">-<?= htmlspecialchars($discount) ?>%</span>
+                        <?php endif; ?>
                     </div>
                 </article>
                 <?php } ?>

@@ -12,7 +12,7 @@ class Language
         Database $db, 
         $name = null, 
         $canonical = null, 
-        $image = null, 
+        $image = null
     )
     {
         $this->db = $db;

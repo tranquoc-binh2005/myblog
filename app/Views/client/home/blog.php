@@ -17,7 +17,9 @@
                 <p itemprop="description">
                     <?=$val['description']?>
                 </p>
-                <p class="time-blog"><?=date('H:i d-m-Y', strtotime($val['updated_at']))?></p>
+                <p class="time-blog">
+                    <?= date('H:i d-m-Y', strtotime($val['updated_at'])) ?>
+                </p>
             </div>
         </article>
         <?php }?>
